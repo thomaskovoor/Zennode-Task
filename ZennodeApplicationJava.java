@@ -37,7 +37,7 @@ public class ZennodeApplicationJava {
 
         
             
-            double discount = 0;
+            double discount = 0.0;
             String discountName = "";
 
             //flat_10_discount
@@ -50,13 +50,13 @@ public class ZennodeApplicationJava {
             if (qtyA > 10 || qtyB > 10 || qtyC > 10) {
             double tempDiscount = 0.0;
             if (qtyA > 10) {
-                tempDiscount = 0.05 * qtyA * 20;
+                tempDiscount+= 0.05 * qtyA * 20;
             }
             if (qtyB > 10) {
-                tempDiscount = 0.05 * qtyB * 40;
+                tempDiscount+= 0.05 * qtyB * 40;
             }
             if (qtyC > 10) {
-                tempDiscount = 0.05 * qtyC * 50;
+                tempDiscount+= 0.05 * qtyC * 50;
             }
             if (tempDiscount > discount) {
                 discount = tempDiscount;
@@ -77,13 +77,13 @@ public class ZennodeApplicationJava {
             if (qtyA + qtyB + qtyC > 30 && (qtyA > 15 || qtyB > 15 || qtyC > 15)) {
             double tempDiscount = 0.0;
             if (qtyA > 15) {
-                tempDiscount = 0.5 * (qtyA - 15) * 20;
+                tempDiscount+= 0.5 * (qtyA - 15) * 20;
             }
             if (qtyB > 15) {
-                tempDiscount = 0.5 * (qtyB - 15) * 40;
+                tempDiscount+= 0.5 * (qtyB - 15) * 40;
             }
             if (qtyC > 15) {
-                tempDiscount = 0.5 * (qtyC - 15) * 50;
+                tempDiscount+= 0.5 * (qtyC - 15) * 50;
             }
             if (tempDiscount > discount) {
                 discount = tempDiscount;

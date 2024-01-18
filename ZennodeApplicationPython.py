@@ -21,50 +21,58 @@ if qtyC>0:
 else:
     giftC = "no"
 
+#Calculate the Subtotal
 subTotal = qtyA*20 + qtyB*40 +qtyC*50
 
 
 discount = 0
 discountName = ""
 
+#flat_10_discount
 if subTotal>200:
     discount = 10
     discountName = "flat_10_discount"
 
+#bulk_5_discount
 if qtyA>10 or qtyB>10 or qtyC>10:
     tempDiscount=0
     if(qtyA>10):
-        tempDiscount = qtyA*28*0.05
+        tempDiscount+= qtyA*28*0.05
     if(qtyB>10):
-        tempDiscount = qtyB*40*0.05
+        tempDiscount+= qtyB*40*0.05
     if(qtyC>10):
-        tempDiscount = qtyC*50*0.05
+        tempDiscount+= qtyC*50*0.05
 
     if tempDiscount>discount:
         discount = tempDiscount
         discountName = "bulk_5_discount"
 
+#bulk_10_discount
 if qtyA+qtyB+qtyC>20:
     tempDiscount = subTotal*0.1 
     if tempDiscount>discount:
         discount = tempDiscount
         discountName = "bulk_10_discount"       
 
+#tiered_50_discount
 if qtyA+qtyB+qtyC>30 and (qtyA>15 or qtyB>15 or qtyC>15):
     tempDiscount = 0
     if qtyA>15:
-        tempDiscount = (qtyA-15) * 20 * .50
+        tempDiscount+= (qtyA-15) * 20 * .50
     if qtyB>15:
-        tempDiscount = (qtyB-15) * 40 * .50
+        tempDiscount+= (qtyB-15) * 40 * .50
     if qtyC>15:
-        tempDiscount = (qtyC-15) * 50 * .50
+        tempDiscount+= (qtyC-15) * 50 * .50
     if tempDiscount>discount:
         discount = tempDiscount
         discountName = "tiered_50_discount"
 
+
+#Calculate the Shipping Fee
 totalQty = qtyA + qtyB + qtyC
 shippingFee = (totalQty // 10 + (totalQty % 10 > 0)) * 5
 
+#Calculate the Gift Wrap Fee
 giftWrapFee = 0
 if giftA == "yes":
     giftWrapFee += qtyA*1
